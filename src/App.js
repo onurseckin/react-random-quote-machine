@@ -4,6 +4,7 @@ import './styles.css'
 import { Button, Container, Typography } from '@material-ui/core'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 import getRandomColor from './Color'
 import { makeStyles } from '@material-ui/core/styles'
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
     color: 'white',
     height: 48,
     padding: '0 30px',
+    marginLeft: 'auto',
   },
   quoteBox: {
     display: 'flex',
@@ -63,6 +65,13 @@ const useStyles = makeStyles({
     padding: '0 20px',
     color: 'white',
   },
+  githubIcon: {
+    width: 20,
+    borderRadius: '5px',
+    padding: '0 20px',
+    color: 'white',
+    marginLeft: '10px',
+  },
 })
 
 function App() {
@@ -85,7 +94,7 @@ function App() {
   }, [])
   const color = getRandomColor()
   const length = data && data.quotes && data.quotes.length
-  const quoteIndex = Math.round(Math.random() * length)
+  const quoteIndex = Math.round(Math.random() * length) - 1
   const text = data && data.quotes && quoteIndex && data.quotes[quoteIndex].quote
   const author = data && data.quotes && quoteIndex && data.quotes[quoteIndex].author
   const handleClick = () => {
@@ -115,6 +124,15 @@ function App() {
               style={{ backgroundColor: `${color}` }}
             >
               <TwitterIcon></TwitterIcon>
+            </a>
+            <a
+              id='github-link'
+              className={classes.githubIcon}
+              target='_top'
+              href='https://github.com/OnurSeckiN'
+              style={{ backgroundColor: `${color}` }}
+            >
+              <GitHubIcon></GitHubIcon>
             </a>
             <Button
               id='new-quote'
